@@ -1,0 +1,11 @@
+# Generalized code for alignment of trimmed reads to the mm10 mouse genome
+/path/to/bismark --parallel 6 -p 4 -X 1000 --bowtie2 --path_to_bowtie /path/to/bowtie2 /path/to/mm10/genome/ -1 trimmed_val_1.fq -2 trimmed_val_2.fq
+
+# Generalized code for deduplication following alignment
+/path/to/deduplicate_bismark -p --bam aligned.bam
+
+# Generalized code for methylation extraction
+/path/to/bismark_methylation_extractor --bedGraph --ignore 3 --ignore_r2 3 --ignore_3prime 3 --ignore_3prime_r2 3 -p --no_overlap --multicore 12 deduplicated.bam
+
+# Generalized code for conversion of coverage to cytosine report
+/path/to/coverage2cytosine --genome_folder /path/to/mm10/genome/ --merge_CpG -o sampleID_merged deduplicated.bismark.cov.gz
