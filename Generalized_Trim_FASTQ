@@ -1,0 +1,2 @@
+# Generalized code for the trimming of raw FASTQ files for downstream alignment
+/path/to/trim_galore -q 30 --length 30 --paired --cores 4 --path_to_cutadapt ~/.local/bin/cutadapt /path/to/r1.fastq /path/to/r2.fastq
